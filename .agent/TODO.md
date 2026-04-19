@@ -4,7 +4,7 @@
 
 - [x] requirements.txt — add `pydantic>=2.0` on a new line. Skip if already present.
 
-- [ ] src/util.py part 1 — add six Pydantic section models. Add these imports and classes, do not touch load_params() yet:
+- [x] src/util.py part 1 — add six Pydantic section models. Add these imports and classes, do not touch load_params() yet:
   ```python
   from pydantic import BaseModel, Field
   from typing import Literal
