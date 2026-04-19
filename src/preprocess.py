@@ -37,19 +37,19 @@ def shuffle_in_parallel(seed, array1, array2):
     return array1, array2
 
 def main():
-    params = load_params()["preprocess"]
+    params = load_params().preprocess
     print(params)
 
     training_images, training_labels = load_npz_data("data/prepared/mnist-train.npz")
     testing_images, testing_labels = load_npz_data("data/prepared/mnist-test.npz")
 
-    seed = params["seed"]
+    seed = params.seed
 
-    if params["normalize"]:
+    if params.normalize:
         training_images = normalize(training_images)
         testing_images = normalize(testing_images)
 
-    if params["shuffle"]:
+    if params.shuffle:
         training_images, training_labels = shuffle_in_parallel(seed, training_images, training_labels)
         testing_images, testing_labels = shuffle_in_parallel(seed, testing_images, testing_labels)
 

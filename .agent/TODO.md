@@ -65,7 +65,7 @@
   Before: `params = load_params()["prepare"]` / `params["seed"]`
   After:  `params = load_params().prepare` / `params.seed`
 
-- [ ] src/preprocess.py — same pattern, section is `preprocess`.
+- [x] src/preprocess.py — same pattern, section is `preprocess`.
 
 - [ ] src/train.py — same pattern, section is `train`.
 
