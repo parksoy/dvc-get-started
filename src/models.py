@@ -27,10 +27,10 @@ def get_model():
     model_params = params.model
 
     if model_params.name.lower() == "mlp":
-        p = params.mlp
+        p = model_params.mlp
         model = mlp(p.units, p.activation)
     elif model_params.name.lower() == "cnn":
-        p = params.cnn
+        p = model_params.cnn
         model = cnn(dense_units=p.dense_units,
                     conv_kernel=(p.conv_kernel_size, p.conv_kernel_size),
                     conv_units=p.conv_units,

@@ -1,6 +1,9 @@
 from ruamel.yaml import YAML
 from pydantic import BaseModel, Field
-from typing import Literal
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
 
 
 class PrepareParams(BaseModel):
@@ -41,6 +44,8 @@ class CnnParams(BaseModel):
 class ModelParams(BaseModel):
     name: Literal["mlp", "cnn"]
     optimizer: str
+    mlp: MlpParams
+    cnn: CnnParams
 
 
 class Params(BaseModel):
@@ -48,8 +53,6 @@ class Params(BaseModel):
     preprocess: PreprocessParams
     train: TrainParams
     model: ModelParams
-    mlp: MlpParams
-    cnn: CnnParams
 
 
 def load_params() -> Params:
