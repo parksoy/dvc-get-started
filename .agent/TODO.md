@@ -61,7 +61,7 @@
       return Params(**raw)
   ```
 
-- [ ] src/prepare.py — replace dict access with attribute access. Pattern:
+- [x] src/prepare.py — replace dict access with attribute access. Pattern:
   Before: `params = load_params()["prepare"]` / `params["seed"]`
   After:  `params = load_params().prepare` / `params.seed`
 

@@ -56,7 +56,7 @@ def remix(images1, images2, labels1, labels2, seed, split):
 
 
 def main():
-    params = load_params()["prepare"]
+    params = load_params().prepare
     print(params)
 
     training_images = mnist_images_idx_to_array("data/raw/train-images-idx3-ubyte.gz")
@@ -68,13 +68,13 @@ def main():
     testing_labels = mnist_labels_idx_to_array("data/raw/t10k-labels-idx1-ubyte.gz")
     # print(f"Read testing labels: {testing_labels}")
 
-    if params["remix"]:
+    if params.remix:
         training_images, testing_images, training_labels, testing_labels = remix(images1=training_images,
                                                                                  images2=testing_images,
                                                                                  labels1=training_labels,
                                                                                  labels2=testing_labels,
-                                                                                 seed=params["seed"],
-                                                                                 split=params["remix_split"])
+                                                                                 seed=params.seed,
+                                                                                 split=params.remix_split)
 
         assert training_images.shape[0] + testing_images.shape[0] == 70000
         assert training_labels.shape[0] + testing_labels.shape[0] == 70000
