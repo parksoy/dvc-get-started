@@ -73,6 +73,6 @@
   Before: `load_params()["mlp"]["units"]`
   After:  `load_params().mlp.units`
 
-- [ ] src/evaluate.py — same pattern:
+- [x] src/evaluate.py — same pattern:
   Before: `load_params()["train"]["batch_size"]`
   After:  `load_params().train.batch_size`

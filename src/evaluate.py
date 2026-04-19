@@ -13,7 +13,7 @@ def main():
     test_img, test_labels = load_npz_data("data/preprocessed/mnist-test.npz")
     model = tf.keras.models.load_model("models/model.h5")
 
-    metrics_dict = model.evaluate(test_img, test_labels, batch_size=params["train"]["batch_size"], return_dict=True)
+    metrics_dict = model.evaluate(test_img, test_labels, batch_size=params.train.batch_size, return_dict=True)
     metrics_file = "metrics.json"
 
     with open(metrics_file, "w") as f:
