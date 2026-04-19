@@ -67,7 +67,7 @@
 
 - [x] src/preprocess.py — same pattern, section is `preprocess`.
 
-- [ ] src/train.py — same pattern, section is `train`.
+- [x] src/train.py — same pattern, section is `train`.
 
 - [ ] src/models.py — same pattern, sections are `model`, `mlp`, `cnn`. Nested example:
   Before: `load_params()["mlp"]["units"]`

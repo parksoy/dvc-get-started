@@ -19,13 +19,13 @@ def history_to_csv(history):
     return csv_string
 
 def main():
-    params = load_params()["train"]
+    params = load_params().train
     m = models.get_model()
     m.summary()
 
     whole_train_img, whole_train_labels = load_npz_data("data/preprocessed/mnist-train.npz")
     test_img, test_labels = load_npz_data("data/preprocessed/mnist-test.npz")
-    validation_split_index = int((1 - params["validation_split"]) * whole_train_img.shape[0])
+    validation_split_index = int((1 - params.validation_split) * whole_train_img.shape[0])
     if validation_split_index == whole_train_img.shape[0]:
         x_train = whole_train_img
         x_valid = test_img
@@ -43,8 +43,8 @@ def main():
     print(f"y_valid: {y_valid.shape}")
 
     history = m.fit(x_train, y_train,
-                  batch_size = params["batch_size"],
-                  epochs = params["epochs"],
+                  batch_size = params.batch_size,
+                  epochs = params.epochs,
                   verbose=1,
                   validation_data = (x_valid, y_valid))
 
