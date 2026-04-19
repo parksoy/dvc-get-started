@@ -44,7 +44,7 @@
       optimizer: str
   ```
 
-- [ ] src/util.py part 2 — add root Params model and update load_params() to return it:
+- [x] src/util.py part 2 — add root Params model and update load_params() to return it:
   ```python
   class Params(BaseModel):
       prepare: PrepareParams

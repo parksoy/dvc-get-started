@@ -42,9 +42,19 @@ class ModelParams(BaseModel):
     name: Literal["mlp", "cnn"]
     optimizer: str
 
-def load_params():
+
+class Params(BaseModel):
+    prepare: PrepareParams
+    preprocess: PreprocessParams
+    train: TrainParams
+    model: ModelParams
+    mlp: MlpParams
+    cnn: CnnParams
+
+
+def load_params() -> Params:
     yaml = YAML(typ="safe")
     with open("params.yaml") as f:
-        params = yaml.load(f)
-    return params
+        raw = yaml.load(f)
+    return Params(**raw)
 
