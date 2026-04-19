@@ -23,39 +23,40 @@ def cnn(dense_units=128, conv_kernel=(3,3), conv_units=32, dropout=0.5, activati
 
 
 def get_model():
-    model_params = load_params()["model"]
+    params = load_params()
+    model_params = params.model
 
-    if model_params["name"].lower() == "mlp":
-        p = model_params["mlp"]
-        model = mlp(p["units"], p["activation"])
-    elif model_params["name"].lower() == "cnn":
-        p = model_params["cnn"]
-        model = cnn(dense_units=p["dense_units"],
-                    conv_kernel=(p["conv_kernel_size"], p["conv_kernel_size"]),
-                    conv_units=p["conv_units"],
-                    dropout=p["dropout"],
-                    activation=p["activation"])
+    if model_params.name.lower() == "mlp":
+        p = params.mlp
+        model = mlp(p.units, p.activation)
+    elif model_params.name.lower() == "cnn":
+        p = params.cnn
+        model = cnn(dense_units=p.dense_units,
+                    conv_kernel=(p.conv_kernel_size, p.conv_kernel_size),
+                    conv_units=p.conv_units,
+                    dropout=p.dropout,
+                    activation=p.activation)
     else:
-        raise Exception(f"No Model with the name {model_params['name']} is defined")
+        raise Exception(f"No Model with the name {model_params.name} is defined")
 
-    if model_params["optimizer"].lower() == "adam":
+    if model_params.optimizer.lower() == "adam":
         optimizer = tf.keras.optimizers.Adam()
-    elif model_params["optimizer"].lower() == "sgd":
+    elif model_params.optimizer.lower() == "sgd":
         optimizer = tf.keras.optimizers.SGD()
-    elif model_params["optimizer"].lower() == "rmsprop":
+    elif model_params.optimizer.lower() == "rmsprop":
         optimizer = tf.keras.optimizers.RMSprop()
-    elif model_params["optimizer"].lower() == "adadelta":
+    elif model_params.optimizer.lower() == "adadelta":
         optimizer = tf.keras.optimizers.Adadelta()
-    elif model_params["optimizer"].lower() == "adagrad":
+    elif model_params.optimizer.lower() == "adagrad":
         optimizer = tf.keras.optimizers.Adagrad()
-    elif model_params["optimizer"].lower() == "adamax":
+    elif model_params.optimizer.lower() == "adamax":
         optimizer = tf.keras.optimizers.Adamax()
-    elif model_params["optimizer"].lower() == "nadam":
+    elif model_params.optimizer.lower() == "nadam":
         optimizer = tf.keras.optimizers.Nadam()
-    elif model_params["optimizer"].lower() == "ftrl":
+    elif model_params.optimizer.lower() == "ftrl":
         optimizer = tf.keras.optimizers.Ftrl()
     else:
-        raise Exception(f"No optimizer with the name {model_params['optimizer']} is defined")
+        raise Exception(f"No optimizer with the name {model_params.optimizer} is defined")
 
     loss = tf.keras.losses.CategoricalCrossentropy(from_logits=True)
 
